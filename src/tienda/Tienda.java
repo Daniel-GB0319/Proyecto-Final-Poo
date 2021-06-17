@@ -2,6 +2,7 @@ package tienda;
 import java.io.IOException;
 import java.util.Scanner;
 
+// Este es una prueba
 public class Tienda{
     public static void main(String[] args) throws IOException {
         int menu=1, i=0, numClientes=0, numCoches=0, numEmpleados=0, numContratos=0;
