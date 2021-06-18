@@ -16,17 +16,6 @@ public class Vehiculo {
     Scanner read=new Scanner(System.in);
 
 // Metodos
-    public Vehiculo(){
-        matricula=null;
-        tipo=null;
-        marca=null;
-        modelo=null;
-        anio=null;
-        precio=null;
-        color=null;
-        estado=null;
-        vendido=null;
-    }
 
     public void registrarCoche(){
 
@@ -61,6 +50,10 @@ public class Vehiculo {
         System.out.println("\nEstado (Nuevo = 0 o Seminuevo = 1) = " + estado);
         System.out.println("\nVendido (Disponible = 0 o Vendido = 1) = " + vendido);
         
+        System.out.println("\nPulse Cualquier Tecla para Continuar... ");
+        System.in.read();
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
     }
 
     public void cambiarStatus(int estado){
@@ -72,24 +65,13 @@ public class Vehiculo {
     }
 
     public void showDetalles(){
-        System.out.println("\nDatos Del Vehiculo ");
-        System.out.println("\nMatricula = " + matricula);
-        System.out.println("\nMarca = " + marca);
-        System.out.println("\nModelo = " + modelo);
-        System.out.println("\nPrecio = " + precio);
+        System.out.println("Matricula: ("+matricula+") Marca: ("+marca+") Modelo: ("+modelo+") Precio: ($"+precio+")");
     }
 
     public void showDetallesFull(){
-        System.out.println("\nDatos Detallados Del Vehiculo ");
-        System.out.println("\nMatricula = " + matricula);
-        System.out.println("\nTipo de coche = " + tipo);
-        System.out.println("\nMarca = " + marca);
-        System.out.println("\nModelo = " + modelo);
-        System.out.println("\nAnio = " + anio);
-        System.out.println("\nPrecio = " + precio);
-        System.out.println("\nColor = " + color);
-        System.out.println("\nEstado (Nuevo = 0 o Seminuevo = 1) = " + estado);
-        System.out.println("\nVendido (Disponible = 0 o Vendido = 1) = " + vendido);
+        showDetalles();
+        System.out.println("\nTipo de coche: ("+tipo+") Anio: ("+anio+") Color: ("+color+")" );
+        System.out.println("\nEstado (Nuevo = 0 o Seminuevo = 1): ("+estado+") Vendido (Disponible = 0 o Vendido = 1) ("+vendido+")");
     }
 
 }
