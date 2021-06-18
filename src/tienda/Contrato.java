@@ -25,10 +25,10 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
         if(numContratos<1000){
         // Se genera idContrato Automaticamente   
             if(numContratos<10){
-                idContrato="C00"+numContratos;
+                idContrato="CV00"+numContratos;
             } else if (numContratos<100){
-                idContrato="C0"+numContratos;
-            } else { idContrato="C"+numContratos; }
+                idContrato="CV0"+numContratos;
+            } else { idContrato="CV"+numContratos; }
         
         // Se asignan demas valores al nuevo contrato
             System.out.println("\n***** Creacion de Nuevo Contrato *****");

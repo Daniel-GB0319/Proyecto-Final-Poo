@@ -7,6 +7,9 @@ public class Empleado extends Persona {
 
 // Metodos
 
+    public void registrarEmpleado (int numEmpleados){
+
+    }
 /* crear funcion generarID (int y).   ejemplo de id = E001 , E002 (usar concatenacion y variable "y" para 
 generar ) (variable "y" proviene de main) 
 

@@ -7,7 +7,7 @@ public class Vehiculo {
     public String tipo;
     public String marca;
     public String modelo;
-    public String anio;
+    public int anio;
     public int precio;
     public String color;
     public int estado; //nuevo o seminuevo
@@ -24,9 +24,16 @@ public class Vehiculo {
     }
 
 /* crear funcion "void registrarCoche()" para asignar valores a atributos de objeto
-funcion "void cambiarStatus()" para cambiar "vendido=0" o "vendido=1" segun sea el caso 
-funcion "void showDetalles()" para imprimir detalles simples (matricula, marca, modelo, precio)
-funcion "void showDetallesFull()" para imprimir todos los detalles (funcion showDetalles() + variables que faltan)
-*/
+funcion "void cambiarStatus()" para cambiar "vendido=0" o "vendido=1" segun sea el caso */
+    public void showDetalles(){
+        System.out.println("Matricula: ("+matricula+") Marca: ("+marca+") Modelo: ("+modelo+") Precio: ($"+precio+")");
+        //para imprimir detalles simples (matricula, marca, modelo, precio)
+    } 
+
+    public void showDetallesFull(){
+        showDetalles();
+        
+    }
+
 
 }
