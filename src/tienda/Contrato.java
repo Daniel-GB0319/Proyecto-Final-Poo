@@ -11,9 +11,9 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     public int diaVenta;
     public int mesVenta;
     public int anioVenta;
-    public int montoTotal; // (precio inicial vehiculo - descuento en caso de existir
-    public int montoAdeudo; // este servira para llevar control de la cantidad adeudada
-    public int descuento;
+    public long montoTotal; // (precio inicial vehiculo - descuento en caso de existir
+    public long montoAdeudo; // este servira para llevar control de la cantidad adeudada
+    public long descuento;
     Scanner read = new Scanner(System.in);
 
 
@@ -25,10 +25,10 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
         if(numContratos<1000){
         // Se genera idContrato Automaticamente   
             if(numContratos<10){
-                idContrato="C00"+numContratos;
+                idContrato="CV00"+numContratos;
             } else if (numContratos<100){
-                idContrato="C0"+numContratos;
-            } else { idContrato="C"+numContratos; }
+                idContrato="CV0"+numContratos;
+            } else { idContrato="CV"+numContratos; }
         
         // Se asignan demas valores al nuevo contrato
             System.out.println("\n***** Creacion de Nuevo Contrato *****");
@@ -40,6 +40,10 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
             System.out.println("\nAnio (4 digitos): ");
             anioVenta=read.nextInt();
             montoTotal=calcularMontoTotal(v);
+            v.cambiarDisponibilidad();
+
+            System.out.println("\033[H\033[2J");
+            System.out.flush();
 
         // Se muestra el status del contrato
             System.out.println("\n--- Resumen del Nuevo Contrato ---");
@@ -64,10 +68,10 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     }
 
     // ### Calcular monto con descuento ###
-    public int calcularMontoTotal(Vehiculo v){
-        System.out.println("\nIntroduzca el porcentaje de descuento a aplicar (0 - 100)");
-        descuento = read.nextInt()/100;
-        return v.precio-descuento;
+    public long calcularMontoTotal(Vehiculo v){
+        System.out.println("\nIntroduzca el porcentaje de descuento a aplicar (0% - 100%)");
+        descuento = read.nextLong()/100;
+        return v.precio-(v.precio*descuento);
     }
     
     // ### Imprimir los detalles del contrato ###
@@ -90,7 +94,7 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     public void realizarPago() throws IOException{
         System.out.println("\n***** Realizacion de Pago *****");
         System.out.println("\nIntroduzca el monto deseado a pagar: ");
-        montoAdeudo -= read.nextInt();
+        montoAdeudo -= read.nextLong();
         System.out.println("\n\n!!!Pago Realizado con Exito!!!");
         System.out.println("\nAdeudo despues del Pago: $"+montoAdeudo);
         

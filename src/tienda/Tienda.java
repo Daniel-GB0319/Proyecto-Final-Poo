@@ -5,15 +5,33 @@ import java.util.Scanner;
 // Este es una prueba
 public class Tienda{
     public static void main(String[] args) throws IOException {
+    // Se declaran variables y objetos necesarios para el programa
         int menu=1, i=0, numClientes=0, numCoches=0, numEmpleados=0, numContratos=0;
-        Vehiculo [] coches = new Vehiculo[15];
+        Vehiculo [] coches = new Vehiculo[10];
         Cliente [] clientes = new Cliente[10];
         Empleado [] empleados = new Empleado[10];
+        Contrato [] contratos = new Contrato[10];
         Scanner read= new Scanner(System.in);
-
-        do{ // Bucle para que funcione el programa hasta que usuario decida salir
         
-        // Menu Principal
+    // Se inicializan Objetos Base
+        System.out.println("\033[H\033[2J"); // Se limpia pantalla
+        System.out.flush();
+
+        Cliente maquetaCliente = new Cliente(); 
+        maquetaCliente.registrarCliente(numClientes);
+        Empleado maquetaEmpleado = new Empleado(); 
+        maquetaEmpleado.registrarEmpleado(numEmpleados);
+        Vehiculo maquetaVehiculo = new Vehiculo(); 
+        maquetaVehiculo.registrarCoche(numCoches);
+        Contrato maquetaContrato = new Contrato(); 
+        maquetaContrato.crearContrato(maquetaCliente,maquetaEmpleado,maquetaVehiculo,numContratos);
+
+        do{ // Bucle para que funcione el programa hasta que usuario decida salir        
+            
+            System.out.println("\033[H\033[2J"); // Se limpia pantalla
+            System.out.flush();
+            
+            // Menu Principal
             System.out.println("\n********* VENTA DE AUTOS *********");
             System.out.println("\n---- Menu Principal ----");
             System.out.println("1) Ver Catalogo de Coches");
@@ -27,7 +45,7 @@ public class Tienda{
 
             switch(menu){
                 case 1:
-                   
+      
                 break;
 
                 case 2:
