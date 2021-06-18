@@ -14,17 +14,24 @@ public class Tienda{
         Scanner read= new Scanner(System.in);
         
     // Se inicializan Objetos Base
-        Vehiculo maquetaVehiculo = new Vehiculo(); 
-        maquetaVehiculo.registrarCoche();
+        System.out.println("\033[H\033[2J"); // Se limpia pantalla
+        System.out.flush();
+
         Cliente maquetaCliente = new Cliente(); 
         maquetaCliente.registrarCliente(numClientes);
         Empleado maquetaEmpleado = new Empleado(); 
         maquetaEmpleado.registrarEmpleado(numEmpleados);
+        Vehiculo maquetaVehiculo = new Vehiculo(); 
+        maquetaVehiculo.registrarCoche(numCoches);
         Contrato maquetaContrato = new Contrato(); 
         maquetaContrato.crearContrato(maquetaCliente,maquetaEmpleado,maquetaVehiculo,numContratos);
 
         do{ // Bucle para que funcione el programa hasta que usuario decida salir        
-        // Menu Principal
+            
+            System.out.println("\033[H\033[2J"); // Se limpia pantalla
+            System.out.flush();
+            
+            // Menu Principal
             System.out.println("\n********* VENTA DE AUTOS *********");
             System.out.println("\n---- Menu Principal ----");
             System.out.println("1) Ver Catalogo de Coches");
@@ -38,15 +45,7 @@ public class Tienda{
 
             switch(menu){
                 case 1:
-                /*
-                prueba
-                */ 
-                coches[numCoches]=maquetaVehiculo;
-                numCoches++;
-
-                   for(i=0;i<numCoches;i++){
-                       coches[i].showDetalles();
-                   }
+      
                 break;
 
                 case 2:

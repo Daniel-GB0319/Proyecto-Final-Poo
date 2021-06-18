@@ -6,11 +6,34 @@ public class Persona {
     public String aPaterno;
     public String aMaterno;
     public int edad;
-    private String curp; // curp en lugar de ine
+    public String aux;
+    public long aux2;
+    private String curp;
     private String domicilio;
-    private int telefono;
+    private long telefono;
 
-    /* crear getter y setter para atributos privados
-    
-    */
+ //Metodos de Clase Padre Persona
+    public void getCurp(){
+        System.out.print(this.curp); 
+    }
+
+    public void setCurp(String curp){
+        this.curp=curp;
+    }
+
+    public void getDomicilio(){
+        System.out.print(this.domicilio); 
+    }
+
+    public void setDomicilio(String domicilio){
+        this.domicilio=domicilio;
+    }
+
+    public void getTelefono(){
+        System.out.print(this.telefono); 
+    }
+
+    public void setTelefono(long telefono){
+        this.telefono=telefono;
+    }
 }
