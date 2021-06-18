@@ -11,7 +11,13 @@ public class Empleado extends Persona {
         ventas=null;
     }
 
+    public void generarIDC(int y){
+        idEmpleado="E00" + y;
+    }   
 
+    public void showEmpleado(){
+
+    }
 /* crear funcion generarID (int y).   ejemplo de id = E001 , E002 (usar concatenacion y variable "y" para 
 generar ) (variable "y" proviene de main) 
 
