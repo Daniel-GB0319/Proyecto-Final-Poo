@@ -23,21 +23,30 @@ public class Cliente extends Persona {
 
         // Se asignan demas valores al nuevo cliente
             System.out.println("\n***** Creacion de Nuevo Cliente *****");
-            System.out.println("\nIntroduzca los Datos que se le Solicitan:");
-            System.out.println("Nombre (Mayusculas y Minusculas): ");
+            System.out.println("Introduzca los Datos que se le Solicitan:");
+            System.out.println("Nombre(S) (Mayusculas y Minusculas)(Utilize Guion Bajo \"_\" para Separar Palabras): ");
             nombre=read.nextLine();
-            System.out.println("\nApellido Paterno (Mayusculas y Minusculas): ");
+            System.out.println("\nApellido Paterno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
             aPaterno=read.nextLine();
-            System.out.println("\nApellido Materno (Mayusculas y Minusculas): ");
+            System.out.println("\nApellido Materno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
             aMaterno=read.nextLine();
             System.out.println("\nEdad: ");
             edad=read.nextInt();
             System.out.println("\nCURP (Mayusculas): ");
             aux=read.next();
             setCurp(aux);
-            System.out.println("\nDomicilio (Calle, Colonia, Municipio o Delegacion, Estado) (Mayusculas y Minusculas): ");
+            System.out.println("\nCalle donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
             aux=read.next();
-            setDomicilio(aux);
+            setCalle(aux);
+            System.out.println("\nColonia donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            aux=read.next();
+            setColonia(aux);
+            System.out.println("\nMunicipio o Delegacion donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            aux=read.next();
+            setMunicipio(aux);
+            System.out.println("\nEstado donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            aux=read.next();
+            setEstado(aux);
             System.out.println("\nTelefono (10 Digitos): ");
             aux2=readAux.nextLong();
             setTelefono(aux2);
@@ -46,16 +55,21 @@ public class Cliente extends Persona {
             System.out.flush();
 
         // Se muestra el status del Nuevo Cliente
-            System.out.println("\n--- Resumen del Nuevo Cliente ---");
-            System.out.println("\nID de Cliente Asignado: "+idCliente);
-            System.out.println("Nombre Completo del Cliente: "+nombre+" "+aPaterno+" "+aMaterno);
-            System.out.println("Edad: "+edad);
-            System.out.println("\nCURP: "); getCurp();
-            System.out.println("\n\nDomicilio: "); getDomicilio();
-            System.out.println("\n\nTelefono: "); getTelefono();
+            System.out.println("--- Resumen del Nuevo Cliente ---");
+            System.out.println("ID de Cliente Asignado: "+idCliente);
+            System.out.println("\nNombre Completo del Cliente: "+nombre+" "+aPaterno+" "+aMaterno);
+            System.out.println("\nEdad: "+edad);
+            dom4=getCurp();
+            System.out.println("\nCURP: "+dom4);
+            dom0=getCalle();
+            dom1=getColonia();
+            dom2=getMunicipio();
+            dom3=getEstado();
+            System.out.println("\nDomicilio: "+dom0+", "+dom1+", "+dom2+", "+dom3);
+            System.out.println("\nTelefono: "); getTelefono();
             System.out.println("\n\n!!!Creacion de Cliente Exitoso!!!");
 
-            System.out.println("\nPulse Cualquier Tecla para Continuar... ");
+            System.out.println("\nPulse Enter para Continuar... ");
             System.in.read();
             System.out.println("\033[H\033[2J");
             System.out.flush();
@@ -74,15 +88,19 @@ public class Cliente extends Persona {
         System.out.println("\n*** Detalles del Cliente \""+idCliente+"\" ***");
         System.out.println("\nNombre Completo del Cliente: "+nombre+" "+aPaterno+" "+aMaterno);
         System.out.println("\nEdad: "+edad);
-        System.out.println("\nCURP: "); getCurp();
-        System.out.println("\nDomicilio: "); getDomicilio();
+        dom4=getCurp();
+        System.out.println("\nCURP: "+dom4);
+        dom0=getCalle();
+        dom1=getColonia();
+        dom2=getMunicipio();
+        dom3=getEstado();
+        System.out.println("\nDomicilio: "+dom0+", "+dom1+", "+dom2+", "+dom3);
         System.out.println("\nTelefono: "); getTelefono();
 
-        System.out.println("\nPulse Cualquier Tecla para Continuar... ");
+        System.out.println("\nPulse Enter para Continuar... ");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();
     }
-
 
 }

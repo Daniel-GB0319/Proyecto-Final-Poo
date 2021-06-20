@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Vehiculo {
 // Atributos
-    public String matricula; // servira para identificarlos
+    public String matricula;
     public String tipo;
     public String marca;
     public String modelo;
@@ -24,7 +24,7 @@ public class Vehiculo {
         if(numCoches<1000){
             // Se asignan demas valores al nuevo contrato
                 System.out.println("\n***** Registro de Nuevo Vehiculo *****");
-                System.out.println("\nIntroduzca los Datos que se le Solicitan:");
+                System.out.println("Introduzca los Datos que se le Solicitan:");
                 System.out.println("Matricula (7 Caracteres entre Mayusculas y Numeros): ");
                 matricula=read.next();
                 System.out.println("\nTipo de Vehiculo (Sedan, Muscle, Deportivo, SUV, etc.): ");
@@ -47,18 +47,18 @@ public class Vehiculo {
                 System.out.flush();
     
             // Se muestra el status del Nuevo Vehiculo
-                System.out.println("\n--- Resumen del Nuevo Vehiculo ---");
-                System.out.println("\nMatricula: "+matricula);
+                System.out.println("--- Resumen del Nuevo Vehiculo Registrado ---");
+                System.out.println("Matricula: "+matricula);
                 System.out.println("\nTipo de Vehiculo: "+tipo);
                 System.out.println("\nMarca: "+marca);
                 System.out.println("\nModelo: "+modelo);
                 System.out.println("\nAnio: "+anio);
                 System.out.println("\nPrecio: $"+precio); 
-                System.out.println("\nColor: $"+color); 
+                System.out.println("\nColor: "+color); 
                 System.out.println("\nEstado: $"+estado); 
-                System.out.println("\n\n!!!Registro de Vehiculo Exitoso!!!");
+                System.out.println("\n!!!Registro de Vehiculo Exitoso!!!");
     
-                System.out.println("\nPulse Cualquier Tecla para Continuar... ");
+                System.out.println("\nPulse Enter para Continuar... ");
                 System.in.read();
                 System.out.println("\033[H\033[2J");
                 System.out.flush();
@@ -69,17 +69,19 @@ public class Vehiculo {
 
     // ### Mostrar Detalles Basicos de Vehiculo ###
     public void showDetallesVehiculo(){
-        System.out.println("Matricula: ("+matricula+") Marca: ("+marca+") Modelo: ("+modelo+") Precio: ($"+precio+")");
+       if(vendido==0){ 
+           System.out.println("Matricula: ("+matricula+") Marca: ("+marca+") Modelo: ("+modelo+") Precio: ($"+precio+") !!!Disponible para Compra!!!");
+        } else {
+            System.out.println("Matricula: ("+matricula+") Marca: ("+marca+") Modelo: ("+modelo+") Precio: ($"+precio+") !!!Agotado!!!");
+        }
     } 
 
     // ### Mostrar Detalles Completos del Vehiculo ###
     public void showDetallesVehiculoFull() throws IOException{
         showDetallesVehiculo();
         System.out.println("Tipo: ("+tipo+") Anio: ("+anio+") Color: ("+color+") Estado: ($"+estado+")");
-        if (vendido==0){System.out.println("!!!Disponible para Compra!!!");}
-        else {System.out.println("!!!Vehiculo Vendido!!!");}
 
-        System.out.println("\nPulse Cualquier Tecla para Continuar... ");
+        System.out.println("\nPulse Enter para Continuar... ");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();
@@ -90,5 +92,6 @@ public class Vehiculo {
         if(vendido==0){vendido=1;}
         else {vendido=0;}    
     }
+
 
 }

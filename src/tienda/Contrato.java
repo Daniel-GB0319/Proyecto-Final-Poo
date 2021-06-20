@@ -13,7 +13,7 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     public int anioVenta;
     public long montoTotal; // (precio inicial vehiculo - descuento en caso de existir
     public long montoAdeudo; // este servira para llevar control de la cantidad adeudada
-    public long descuento;
+    public int status; // Saber si Contrato Sigue Activo=0 o Cancelado=1
     Scanner read = new Scanner(System.in);
 
 
@@ -30,24 +30,28 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
                 idContrato="CV0"+numContratos;
             } else { idContrato="CV"+numContratos; }
         
+            System.out.println("\033[H\033[2J");
+            System.out.flush();
         // Se asignan demas valores al nuevo contrato
-            System.out.println("\n***** Creacion de Nuevo Contrato *****");
-            System.out.println("\nIntroduzca la fecha actual: ");
-            System.out.println("\nDia (2 digitos): ");
+            System.out.println("***** Creacion de Nuevo Contrato *****");
+            System.out.println("Introduzca los Datos que se le Solicitan: ");
+            System.out.println("\nDia Actual (2 digitos): ");
             diaVenta=read.nextInt();
-            System.out.println("\nMes (2 digitos): ");
+            System.out.println("\nMes Actual (2 digitos): ");
             mesVenta=read.nextInt();
-            System.out.println("\nAnio (4 digitos): ");
+            System.out.println("\nAnio Actual (4 digitos): ");
             anioVenta=read.nextInt();
-            montoTotal=calcularMontoTotal(v);
+            montoTotal=v.precio;
+            montoAdeudo=v.precio;
             v.cambiarDisponibilidad();
+            status=0;
 
             System.out.println("\033[H\033[2J");
             System.out.flush();
 
         // Se muestra el status del contrato
-            System.out.println("\n--- Resumen del Nuevo Contrato ---");
-            System.out.println("\nID de Contrato Asignado: "+idContrato);
+            System.out.println("--- Resumen del Nuevo Contrato ---");
+            System.out.println("ID de Contrato Asignado: "+idContrato);
             idCliente=c.idCliente;
             System.out.println("\nID del Cliente: "+idCliente);
             matricula=v.matricula;
@@ -56,9 +60,9 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
             System.out.println("\nID del Empleado que realizo la venta: "+idEmpleado);
             System.out.println("\nFecha de realizacion del Contrato: "+diaVenta+"/"+mesVenta+"/"+anioVenta);
             System.out.println("\nMonto Total de la Compra: "+montoTotal);
-            System.out.println("\n\n!!!Creacion de Contrato Exitoso!!!");
+            System.out.println("\n!!!Creacion de Contrato Exitoso!!!");
 
-            System.out.println("\nPulse Cualquier Tecla para Continuar... ");
+            System.out.println("\nPulse Enter para Continuar... ");
             System.in.read();
             System.out.println("\033[H\033[2J");
             System.out.flush();
@@ -66,25 +70,32 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     // Se genera mensaje de error y no se ejecuta metodo al no haber espacio disponible
         }else{ System.out.println("!!Error al Crear un Nuevo Contrato!! No hay espacio suficiente"); }
     }
-
-    // ### Calcular monto con descuento ###
-    public long calcularMontoTotal(Vehiculo v){
-        System.out.println("\nIntroduzca el porcentaje de descuento a aplicar (0% - 100%)");
-        descuento = read.nextLong()/100;
-        return v.precio-(v.precio*descuento);
-    }
     
-    // ### Imprimir los detalles del contrato ###
-    public void showDetallesContrato() throws IOException{
+    // ### Imprimir los detalles Basicos del contrato ###
+    public void showDetallesContrato(){
+        if(status==0){
+            System.out.print("ID: ("+idContrato+") Fecha de realizacion del Contrato: ("+diaVenta+"/"+mesVenta+"/"+anioVenta+") !!!Contrato Activo!!!");
+        } else {
+            System.out.print("ID: ("+idContrato+") Fecha de realizacion del Contrato: ("+diaVenta+"/"+mesVenta+"/"+anioVenta+") !!!Contrato Cancelado!!!");
+        }
+    }
+
+    // ### Imprimir los detalles Completos del Contrato ###
+    public void showDetallesContratoFull() throws IOException{
         System.out.println("\n*** Detalles del Contrato \""+idContrato+"\" ***");
-        System.out.println("\nID del Cliente: "+idCliente);
+        System.out.println("ID del Cliente: "+idCliente);
         System.out.println("\nMatricula del Coche Adquirido: "+matricula);
         System.out.println("\nID del Empleado que realizo la venta: "+idEmpleado);
         System.out.println("\nFecha de realizacion del Contrato: "+diaVenta+"/"+mesVenta+"/"+anioVenta);
         System.out.println("\nMonto Total de la Compra: $"+montoTotal);
         System.out.println("\nMonto de Adeudo restante por pagar: $"+montoAdeudo);
-        
-        System.out.println("\nPulse Cualquier Tecla para Continuar... ");
+        if(status==0){
+            System.out.print("Status del Contrato: (Contrato Activo)");
+        } else {
+            System.out.print("Status del Contrato: (Contrato Cancelado)");
+        }
+
+        System.out.println("\nPulse Enter para Continuar... ");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();
@@ -93,14 +104,26 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     // ### Realizar Un Pago ###
     public void realizarPago() throws IOException{
         System.out.println("\n***** Realizacion de Pago *****");
-        System.out.println("\nIntroduzca el monto deseado a pagar: ");
+        System.out.println("Introduzca el monto deseado a pagar: ");
         montoAdeudo -= read.nextLong();
         System.out.println("\n\n!!!Pago Realizado con Exito!!!");
-        System.out.println("\nAdeudo despues del Pago: $"+montoAdeudo);
+        System.out.println("Adeudo despues del Pago: $"+montoAdeudo);
         
-        System.out.println("\n\nPulse Cualquier Tecla para Continuar... ");
+        System.out.println("\nPulse Enter para Continuar... ");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();
-    } 
+    }
+    
+    public void cancelarContrato() throws IOException{
+        status=1;
+        montoAdeudo=0;
+        System.out.println("\n!!!Contrato Cancelado con Exito!!!");
+    
+        System.out.println("\nPulse Enter para Continuar... ");
+        System.in.read();
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
+    }
+
 }
