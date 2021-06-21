@@ -24,30 +24,30 @@ public class Cliente extends Persona {
         // Se asignan demas valores al nuevo cliente
             System.out.println("\n***** Creacion de Nuevo Cliente *****");
             System.out.println("Introduzca los Datos que se le Solicitan:");
-            System.out.println("Nombre(S) (Mayusculas y Minusculas)(Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            System.out.println("Nombre(S) (Mayusculas y Minusculas)(Utilize Guion Bajo \"_\" para Separar Palabras)... &");
             nombre=read.nextLine();
-            System.out.println("\nApellido Paterno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            System.out.println("\nApellido Paterno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
             aPaterno=read.nextLine();
-            System.out.println("\nApellido Materno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            System.out.println("\nApellido Materno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
             aMaterno=read.nextLine();
-            System.out.println("\nEdad: ");
+            System.out.println("\nEdad... &");
             edad=read.nextInt();
-            System.out.println("\nCURP (Mayusculas): ");
+            System.out.println("\nCURP (Mayusculas)... &");
             aux=read.next();
             setCurp(aux);
-            System.out.println("\nCalle donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            System.out.println("\nCalle donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
             aux=read.next();
             setCalle(aux);
-            System.out.println("\nColonia donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            System.out.println("\nColonia donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
             aux=read.next();
             setColonia(aux);
-            System.out.println("\nMunicipio o Delegacion donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            System.out.println("\nMunicipio o Delegacion donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
             aux=read.next();
             setMunicipio(aux);
-            System.out.println("\nEstado donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+            System.out.println("\nEstado donde Reside el Cliente (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
             aux=read.next();
             setEstado(aux);
-            System.out.println("\nTelefono (10 Digitos): ");
+            System.out.println("\nTelefono de Contacto (10 Digitos)... &");
             aux2=readAux.nextLong();
             setTelefono(aux2);
 
@@ -55,7 +55,9 @@ public class Cliente extends Persona {
             System.out.flush();
 
         // Se muestra el status del Nuevo Cliente
-            System.out.println("--- Resumen del Nuevo Cliente ---");
+            System.out.println("********* D.A System *********");
+            System.out.println("Version 3.0");
+            System.out.println("\n--- Resumen del Nuevo Cliente Registrado ---");
             System.out.println("ID de Cliente Asignado: "+idCliente);
             System.out.println("\nNombre Completo del Cliente: "+nombre+" "+aPaterno+" "+aMaterno);
             System.out.println("\nEdad: "+edad);
@@ -66,10 +68,10 @@ public class Cliente extends Persona {
             dom2=getMunicipio();
             dom3=getEstado();
             System.out.println("\nDomicilio: "+dom0+", "+dom1+", "+dom2+", "+dom3);
-            System.out.println("\nTelefono: "); getTelefono();
+            System.out.println("\nTelefono de Contacto: "); getTelefono();
             System.out.println("\n\n!!!Creacion de Cliente Exitoso!!!");
 
-            System.out.println("\nPulse Enter para Continuar... ");
+            System.out.println("\nPulse Enter para Continuar... &");
             System.in.read();
             System.out.println("\033[H\033[2J");
             System.out.flush();
@@ -80,7 +82,7 @@ public class Cliente extends Persona {
 
     // ### Mostrar Datos Completos del Cliente ###
     public void showDetallesCliente(){
-        System.out.print(" "+idCliente+" "+nombre+" "+aPaterno+" "+aMaterno);
+        System.out.print("ID: ("+idCliente+") Nombre: "+nombre+" "+aPaterno+" "+aMaterno);
     }
 
     // ### Mostrar Datos Completos del Cliente ###
@@ -95,9 +97,9 @@ public class Cliente extends Persona {
         dom2=getMunicipio();
         dom3=getEstado();
         System.out.println("\nDomicilio: "+dom0+", "+dom1+", "+dom2+", "+dom3);
-        System.out.println("\nTelefono: "); getTelefono();
+        System.out.println("\nTelefono de Contacto: "); getTelefono();
 
-        System.out.println("\nPulse Enter para Continuar... ");
+        System.out.println("\nPulse Enter para Continuar... &");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();
