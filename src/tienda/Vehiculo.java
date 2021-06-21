@@ -47,7 +47,9 @@ public class Vehiculo {
                 System.out.flush();
     
             // Se muestra el status del Nuevo Vehiculo
-                System.out.println("--- Resumen del Nuevo Vehiculo Registrado ---");
+                System.out.println("********* D.A System *********");
+                System.out.println("Version 3.0");
+                System.out.println("\n--- Resumen del Nuevo Vehiculo Registrado ---");
                 System.out.println("Matricula: "+matricula);
                 System.out.println("\nTipo de Vehiculo: "+tipo);
                 System.out.println("\nMarca: "+marca);
@@ -55,10 +57,10 @@ public class Vehiculo {
                 System.out.println("\nAnio: "+anio);
                 System.out.println("\nPrecio: $"+precio); 
                 System.out.println("\nColor: "+color); 
-                System.out.println("\nEstado: $"+estado); 
-                System.out.println("\n!!!Registro de Vehiculo Exitoso!!!");
+                System.out.println("\nEstado: "+estado); 
+                System.out.println("\n\n!!!Registro de Vehiculo Exitoso!!!");
     
-                System.out.println("\nPulse Enter para Continuar... ");
+                System.out.println("\nPulse Enter para Continuar... &");
                 System.in.read();
                 System.out.println("\033[H\033[2J");
                 System.out.flush();
@@ -79,9 +81,9 @@ public class Vehiculo {
     // ### Mostrar Detalles Completos del Vehiculo ###
     public void showDetallesVehiculoFull() throws IOException{
         showDetallesVehiculo();
-        System.out.println("Tipo: ("+tipo+") Anio: ("+anio+") Color: ("+color+") Estado: ($"+estado+")");
+        System.out.println("Tipo: ("+tipo+") Anio: ("+anio+") Color: ("+color+") Estado: ("+estado+")");
 
-        System.out.println("\nPulse Enter para Continuar... ");
+        System.out.println("\nPulse Enter para Continuar... &");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();
@@ -92,6 +94,4 @@ public class Vehiculo {
         if(vendido==0){vendido=1;}
         else {vendido=0;}    
     }
-
-
 }

@@ -11,10 +11,12 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     public int diaVenta;
     public int mesVenta;
     public int anioVenta;
+    public long aux;
     public long montoTotal; // (precio inicial vehiculo - descuento en caso de existir
     public long montoAdeudo; // este servira para llevar control de la cantidad adeudada
-    public int status; // Saber si Contrato Sigue Activo=0 o Cancelado=1
+    public int status; // Saber si Contrato Sigue Activo=0, Liquidado o Pagado Completamente=1  Cancelado=2
     Scanner read = new Scanner(System.in);
+    Scanner readAux = new Scanner(System.in);
 
 
 // Metodos de Clase Contrato
@@ -45,12 +47,15 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
             montoAdeudo=v.precio;
             v.cambiarDisponibilidad();
             status=0;
+            e.aumentarVenta();
 
             System.out.println("\033[H\033[2J");
             System.out.flush();
 
         // Se muestra el status del contrato
-            System.out.println("--- Resumen del Nuevo Contrato ---");
+            System.out.println("********* D.A System *********");
+            System.out.println("Version 3.0");
+            System.out.println("\n--- Resumen del Nuevo Contrato Creado ---");
             System.out.println("ID de Contrato Asignado: "+idContrato);
             idCliente=c.idCliente;
             System.out.println("\nID del Cliente: "+idCliente);
@@ -60,9 +65,9 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
             System.out.println("\nID del Empleado que realizo la venta: "+idEmpleado);
             System.out.println("\nFecha de realizacion del Contrato: "+diaVenta+"/"+mesVenta+"/"+anioVenta);
             System.out.println("\nMonto Total de la Compra: "+montoTotal);
-            System.out.println("\n!!!Creacion de Contrato Exitoso!!!");
+            System.out.println("\n\n!!!Creacion de Contrato Exitoso!!!");
 
-            System.out.println("\nPulse Enter para Continuar... ");
+            System.out.println("\nPulse Enter para Continuar... &");
             System.in.read();
             System.out.println("\033[H\033[2J");
             System.out.flush();
@@ -75,8 +80,12 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
     public void showDetallesContrato(){
         if(status==0){
             System.out.print("ID: ("+idContrato+") Fecha de realizacion del Contrato: ("+diaVenta+"/"+mesVenta+"/"+anioVenta+") !!!Contrato Activo!!!");
-        } else {
-            System.out.print("ID: ("+idContrato+") Fecha de realizacion del Contrato: ("+diaVenta+"/"+mesVenta+"/"+anioVenta+") !!!Contrato Cancelado!!!");
+        } else { 
+            if (status==1){
+                System.out.print("ID: ("+idContrato+") Fecha de realizacion del Contrato: ("+diaVenta+"/"+mesVenta+"/"+anioVenta+") !!!Contrato Liquidado!!!");
+            }else {
+                System.out.print("ID: ("+idContrato+") Fecha de realizacion del Contrato: ("+diaVenta+"/"+mesVenta+"/"+anioVenta+") !!!Contrato Cancelado!!!");
+            }
         }
     }
 
@@ -91,8 +100,12 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
         System.out.println("\nMonto de Adeudo restante por pagar: $"+montoAdeudo);
         if(status==0){
             System.out.print("Status del Contrato: (Contrato Activo)");
-        } else {
-            System.out.print("Status del Contrato: (Contrato Cancelado)");
+        } else { 
+            if (status==1){
+                System.out.print("Status del Contrato: (Contrato Liquidado)");
+            } else {
+                System.out.print("Status del Contrato: (Contrato Cancelado)");
+            }
         }
 
         System.out.println("\nPulse Enter para Continuar... ");
@@ -103,24 +116,41 @@ public class Contrato { // clase "Venta" fue renombrado a Contrato
 
     // ### Realizar Un Pago ###
     public void realizarPago() throws IOException{
-        System.out.println("\n***** Realizacion de Pago *****");
-        System.out.println("Introduzca el monto deseado a pagar: ");
-        montoAdeudo -= read.nextLong();
-        System.out.println("\n\n!!!Pago Realizado con Exito!!!");
-        System.out.println("Adeudo despues del Pago: $"+montoAdeudo);
-        
-        System.out.println("\nPulse Enter para Continuar... ");
+        if (status==2 || status==1){
+            System.out.println("\n!!!No se puede realizar Pago porque Contrato ya ha sido Cancelado o Liquidado!!!");
+        } else {
+            System.out.println("\n***** Realizacion de Pago *****");
+            System.out.println("Introduzca el monto deseado a pagar (Numeros Enteros y Sin Comas)... &");
+            aux = readAux.nextLong();
+            montoAdeudo-=aux;
+            System.out.println("\n\n!!!Pago Realizado con Exito!!!");
+            if(montoAdeudo<=0){
+                montoAdeudo=0;
+                System.out.println("\n\n!!!Contrato Liquidado!!!");
+                status=1;    
+            }
+            System.out.println("Adeudo despues del Pago: $"+montoAdeudo);
+        }
+       
+        System.out.println("\nPulse Enter para Continuar... &");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();
     }
     
     public void cancelarContrato() throws IOException{
-        status=1;
-        montoAdeudo=0;
-        System.out.println("\n!!!Contrato Cancelado con Exito!!!");
-    
-        System.out.println("\nPulse Enter para Continuar... ");
+        if(status==0){
+            status=2;
+            montoAdeudo=0;
+            System.out.println("\n!!!Contrato Cancelado con Exito!!!");   
+        } else { 
+            if (status==1){
+                System.out.println("\n!!!Contrato no puede Cancelarse porque ya ha sido Liquidado!!!");
+            } else {
+                System.out.println("\n!!!Este Contrato ya ha sido Cancelado!!!");
+            }
+        }
+        System.out.println("\nPulse Enter para Continuar... &");
         System.in.read();
         System.out.println("\033[H\033[2J");
         System.out.flush();

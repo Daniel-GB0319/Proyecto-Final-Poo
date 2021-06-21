@@ -25,33 +25,33 @@ public class Empleado extends Persona {
             // Se asignan demas valores al nuevo contrato
                 System.out.println("\n***** Creacion de Nuevo Empleado *****");
                 System.out.println("Introduzca los siguientes Datos Solicitados:");
-                System.out.println("Nombre(S) (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+                System.out.println("Nombre(S) (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
                 nombre=read.next();
-                System.out.println("\nApellido Paterno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+                System.out.println("\nApellido Paterno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
                 aPaterno=read.next();
-                System.out.println("\nApellido Materno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+                System.out.println("\nApellido Materno (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
                 aMaterno=read.next();
-                System.out.println("\nEdad: ");
+                System.out.println("\nEdad... &");
                 edad=read.nextInt();
-                System.out.println("\nCURP (Mayusculas): ");
+                System.out.println("\nCURP (Mayusculas)... &");
                 aux=read.next();
                 setCurp(aux);
-                System.out.println("\nCalle donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+                System.out.println("\nCalle donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
                 aux=read.next();
                 setCalle(aux);
-                System.out.println("\nColonia donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+                System.out.println("\nColonia donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
                 aux=read.next();
                 setColonia(aux);
-                System.out.println("\nMunicipio o Delegacion donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+                System.out.println("\nMunicipio o Delegacion donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
                 aux=read.next();
                 setMunicipio(aux);
-                System.out.println("\nEstado donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras): ");
+                System.out.println("\nEstado donde Reside el Empleado (Mayusculas y Minusculas) (Utilize Guion Bajo \"_\" para Separar Palabras)... &");
                 aux=read.next();
                 setEstado(aux);
-                System.out.println("\nTelefono (10 Digitos): ");
+                System.out.println("\nTelefono de Contacto (10 Digitos)... &");
                 aux2=readAux.nextLong();
                 setTelefono(aux2);
-                System.out.println("\nSalario: ");
+                System.out.println("\nSalario (Numeros Enteros y sin Comas)... &");
                 salario=readAux.nextLong();
                 ventas=0;
 
@@ -59,7 +59,9 @@ public class Empleado extends Persona {
                 System.out.flush();
     
             // Se muestra el status del Nuevo Empleado
-                System.out.println("--- Resumen del Nuevo Empleado Registrado ---");
+                System.out.println("********* D.A System *********");
+                System.out.println("Version 3.0");
+                System.out.println("\n--- Resumen del Nuevo Empleado Registrado ---");
                 System.out.println("ID de Empleado Asignado: "+idEmpleado);
                 System.out.println("\nNombre Completo del Empleado: "+nombre+" "+aPaterno+" "+aMaterno);
                 System.out.println("\nEdad: "+edad);
@@ -70,11 +72,11 @@ public class Empleado extends Persona {
                 dom2=getMunicipio();
                 dom3=getEstado();
                 System.out.println("\nDomicilio: "+dom0+", "+dom1+", "+dom2+", "+dom3);
-                System.out.println("\nTelefono: "); getTelefono();
+                System.out.println("\nTelefono de Contacto: "); getTelefono();
                 System.out.println("\nSalario: $"+salario);
                 System.out.println("\n!!!Creacion de Empleado Exitoso!!!");
     
-                System.out.println("\nPulse Enter para Continuar... ");
+                System.out.println("\nPulse Enter para Continuar... &");
                 System.in.read();
                 System.out.println("\033[H\033[2J");
                 System.out.flush();
@@ -85,7 +87,7 @@ public class Empleado extends Persona {
     
         // ### Mostrar Datos Basicos del Empleado ###
         public void showDetallesEmpleado(){
-            System.out.print(" "+idEmpleado+" "+nombre+" "+aPaterno+" "+aMaterno+" Salario:($"+salario+")");
+            System.out.print("ID: ("+idEmpleado+") Nombre: ("+nombre+" "+aPaterno+" "+aMaterno+") Salario:($"+salario+")");
         }
     
         // ### Mostrar Datos Completos del Empleado ###
@@ -100,11 +102,11 @@ public class Empleado extends Persona {
             dom2=getMunicipio();
             dom3=getEstado();
             System.out.println("\nDomicilio: "+dom0+", "+dom1+", "+dom2+", "+dom3);
-            System.out.println("\nTelefono: "); getTelefono();
+            System.out.println("\nTelefono de Contacto: "); getTelefono();
             System.out.println("\nSalario: $"+salario);
-            System.out.println("\nVentas: "+ventas);
+            System.out.println("\nNumero de Ventas Realizadas: "+ventas);
     
-            System.out.println("\nPulse Enter para Continuar... ");
+            System.out.println("\nPulse Enter para Continuar... &");
             System.in.read();
             System.out.println("\033[H\033[2J");
             System.out.flush();
@@ -114,13 +116,13 @@ public class Empleado extends Persona {
          public void editarSalario() throws IOException{
             System.out.println("\n*** Gestion de Salario del Empleado \""+idEmpleado+"\" ***");
             System.out.println("Salario Actual: $"+salario);
-            System.out.println("\nIngrese la nueva cantidad de Salario a Asignar: ");
+            System.out.println("\nIngrese la nueva cantidad de Salario a Asignar (Numeros Enteros y Sin Comas)... &");
             salario=readAux.nextLong();
 
             System.out.println("\n!!!Cambio de Salario Exitoso!!!");
             System.out.println("Nuevo Salario: $"+salario);
 
-            System.out.println("\nPulse Enter para Continuar... ");
+            System.out.println("\nPulse Enter para Continuar... &");
             System.in.read();
             System.out.println("\033[H\033[2J");
             System.out.flush();
