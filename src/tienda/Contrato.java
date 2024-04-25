@@ -2,6 +2,7 @@ package tienda;
 import java.io.IOException;
 import java.util.Scanner;
 
+// Ejemplo
 public class Contrato { // clase "Venta" fue renombrado a Contrato
 // Atributos
     public String idContrato;
